@@ -1,0 +1,9 @@
+.nameInput {
+	display: flex;
+	margin: auto;
+	align-items: center;
+	justify-content: center;
+	width: 500px;
+	flex-direction: column;
+}
+

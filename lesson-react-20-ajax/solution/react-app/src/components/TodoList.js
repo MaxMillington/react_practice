@@ -1,0 +1,94 @@
+
+var React = require('react');
+
+import './styles.css'
+import delButton from './delete.png'
+
+var controller = require('./todo-controller.js');
+
+var TodoItem = React.createClass({
+    render: function () {
+        return (
+            <div className="item">
+                <a onClick={this._update}
+                    title="Update this todo item"
+                    className="update-link"> {this.props.todo.content} </a>
+                  <a onClick={this._delete}
+                    title="Delete this todo item"
+                    style={{float: "right"}}
+                    >
+                    <img src={delButton} alt="Delete" /></a>
+            </div>
+        );
+    },
+    _update(event) {
+      event.preventDefault()
+      //this.props.update( this.props.todo )
+    },
+    _delete(event) {
+      event.preventDefault()
+      this.props.delete(this.props.todo)
+    }
+
+});
+
+var TodoInput = React.createClass({
+    render: function () {
+        return (
+            <form onSubmit={this.submit}>
+                <div className="item-new">
+                    <input type="text" name="content" className="input"/>
+                </div>
+            </form>
+        );
+    },
+    submit( event ) {
+        event.preventDefault();
+        var content = event.target.elements[0].value;
+        event.target.elements[0].value = '';
+        this.props.addTodo( content );
+    }
+});
+
+var TodoList = React.createClass({
+    getInitialState() {
+        return {
+            todos: []
+        }
+    },
+
+    componentDidMount() {
+        controller.findAll( this.done );
+    },
+
+    done: function( todos ) {
+        this.setState( { todos: todos });
+    },
+
+    render: function render() {
+        var self = this;
+
+        return (
+            <div id="layout">
+                <h1 id="page-title">Express Todo</h1>
+                <div id="list">
+
+                    <TodoInput addTodo={this.addTodo} />
+
+                    {this.state.todos.map( function(todo, idx) {
+                        return ( <TodoItem key={idx} todo={todo} delete={self.delete} /> );
+                        })}
+
+                </div>
+            </div>
+        )
+    },
+    addTodo( content ) {
+        controller.create( content, this.done );
+    },
+    delete(todo) {
+        controller.delete( todo.id, this.done );
+    }
+});
+
+module.exports = TodoList

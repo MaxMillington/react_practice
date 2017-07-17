@@ -1,0 +1,38 @@
+exports[`Hidden --  should accept a click event 1`] = `
+<div
+  onClick={[Function]}>
+  <span>
+    Click Here
+  </span>
+  <p
+    className="none">
+    Can you see me now?
+  </p>
+</div>
+`;
+
+exports[`Hidden --  should exist 1`] = `
+<div
+  onClick={[Function]}>
+  <span>
+    Click Here
+  </span>
+  <p
+    className="block">
+    Can you see me now?
+  </p>
+</div>
+`;
+
+exports[`Hidden --  should return to normal after two click events 1`] = `
+<div
+  onClick={[Function]}>
+  <span>
+    Click Here
+  </span>
+  <p
+    className="block">
+    Can you see me now?
+  </p>
+</div>
+`;
