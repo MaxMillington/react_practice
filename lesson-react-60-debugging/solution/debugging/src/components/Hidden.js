@@ -11,7 +11,6 @@ export default class Hidden extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             visible: STATUS.NORMAL
         };
