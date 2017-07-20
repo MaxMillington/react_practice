@@ -1,7 +1,7 @@
 import * as constants from './QuoteActions'
 
 // TODO add the isDelayed property to the initialState, set it to false
-const initialState = { name: '', quote: '', idDelayed: false };
+const initialState = { name: '', quote: '', isDelayed: false };
 
 export default function nameReducer(state, action) {
 	state = state || initialState;
