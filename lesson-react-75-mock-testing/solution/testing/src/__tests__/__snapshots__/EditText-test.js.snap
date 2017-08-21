@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditText changes text 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <label
+      htmlFor="editText"
+    >
+      Input Text: 
+    </label>
+    <input
+      id="editText"
+      onChange={[Function]}
+      type="text"
+      value="hello"
+    />
+  </form>
+</div>
+`;
+
+exports[`EditText renders correctly 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <label
+      htmlFor="editText"
+    >
+      Input Text: 
+    </label>
+    <input
+      id="editText"
+      onChange={[Function]}
+      type="text"
+      value=""
+    />
+  </form>
+</div>
+`;
