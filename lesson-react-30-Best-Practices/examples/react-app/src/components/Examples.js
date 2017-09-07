@@ -62,7 +62,7 @@ const ImACreateClass = React.createClass({
     },
     render() {
       return (
-        <div onClick={this._click} >Hello {name}, ImACreateClass</div>
+        <div onClick={this._click} >Hello {this.props.name}, ImACreateClass</div>
       )
     }
 })
