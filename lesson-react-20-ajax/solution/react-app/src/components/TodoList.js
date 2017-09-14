@@ -10,10 +10,10 @@ var TodoItem = React.createClass({
     render: function () {
         return (
             <div className="item">
-                <a onClick={this._update}
+                <a onClick={this.update}
                     title="Update this todo item"
                     className="update-link"> {this.props.todo.content} </a>
-                  <a onClick={this._delete}
+                  <a onClick={this.remove}
                     title="Delete this todo item"
                     style={{float: "right"}}
                     >
@@ -21,13 +21,13 @@ var TodoItem = React.createClass({
             </div>
         );
     },
-    _update(event) {
+    update(event) {
       event.preventDefault()
       //this.props.update( this.props.todo )
     },
-    _delete(event) {
+    remove(event) {
       event.preventDefault()
-      this.props.delete(this.props.todo)
+      this.props.remove(this.props.todo)
     }
 
 });
@@ -66,7 +66,6 @@ var TodoList = React.createClass({
     },
 
     render: function render() {
-        var self = this;
 
         return (
             <div id="layout">
@@ -75,8 +74,8 @@ var TodoList = React.createClass({
 
                     <TodoInput addTodo={this.addTodo} />
 
-                    {this.state.todos.map( function(todo, idx) {
-                        return ( <TodoItem key={idx} todo={todo} delete={self.delete} /> );
+                    {this.state.todos.map( (todo, idx) => {
+                        return ( <TodoItem key={idx} todo={todo} remove={this.remove} /> );
                         })}
 
                 </div>
@@ -86,8 +85,8 @@ var TodoList = React.createClass({
     addTodo( content ) {
         controller.create( content, this.done );
     },
-    delete(todo) {
-        controller.delete( todo.id, this.done );
+    remove(todo) {
+        controller.remove( todo.id, this.done );
     }
 });
 

@@ -35,7 +35,7 @@ module.exports = {
   },
 
   // TODO replace this method with one using jquery
-  delete: function(id, callback) {
+  remove: function(id, callback) {
     var tt = todos.filter(function(todo) {
       return (todo.id !== id);
     });

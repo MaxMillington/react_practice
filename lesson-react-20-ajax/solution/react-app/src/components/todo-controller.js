@@ -23,7 +23,7 @@ module.exports = {
       callback(todos);
     });
   },
-  delete: function(id, callback) {
+  remove: function(id, callback) {
     $.ajax({
       url: BASE + '/' + id,
       type: 'DELETE',
