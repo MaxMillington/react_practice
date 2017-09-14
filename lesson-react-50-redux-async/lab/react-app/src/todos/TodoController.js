@@ -31,7 +31,7 @@ const actions = {
         return todos;
     },
 
-    delete: function (id ) {
+    remove: function (id ) {
         let tt = todos.filter(function (todo) {
             return (todo.id !== id);
         });

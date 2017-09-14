@@ -21,7 +21,7 @@ class TodoActions {
   }
 
   remove( dispatch, id) {
-    let todos = controller.delete(id)
+    let todos = controller.remove(id)
     dispatch( {
       type: Constants.TODO_DELETE,
       todos
