@@ -53,7 +53,7 @@ export default class TodoContainer extends React.Component {
     remove(id) {
       // TODO remove the calls to the todoController
       // TODO replace with calls to the Dispather.dispatch( an action )
-      todoController.delete( id, (todos) => {
+      todoController.remove( id, (todos) => {
         this.setState({todos: todos})
       });
     }

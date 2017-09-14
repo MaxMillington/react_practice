@@ -30,8 +30,8 @@ module.exports = {
         todos = tt;
         callback( todos );
     },
-    
-    delete: function (id, callback ) {
+
+    remove: function (id, callback ) {
         let tt = todos.filter(function (todo) {
             return (todo.id !== id);
         });

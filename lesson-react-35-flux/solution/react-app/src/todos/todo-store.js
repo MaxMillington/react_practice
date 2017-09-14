@@ -37,7 +37,7 @@ Dispatcher.register(function(action) {
             });
             break;
         case constants.TODO_DELETE:
-            controller.delete(action.id, function(results) {
+            controller.remove(action.id, function(results) {
                 todos = results;
                 TodoStore.emitChange();
             });
