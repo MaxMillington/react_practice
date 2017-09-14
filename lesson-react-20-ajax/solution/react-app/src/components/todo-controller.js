@@ -1,7 +1,7 @@
 
 var $ = require('jquery')
 
-var BASE = 'http://localhost:3080/v1/todos';
+var BASE = '/v1/todos';
 
 module.exports = {
   create: function(content, callback) {
