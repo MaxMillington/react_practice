@@ -11,22 +11,18 @@ const mapStateToProps = (state) => {
     quote: state.quotes.quote
   }
 }
-
 const mapDispatchToProps = (dispatch) => {
   return {
     saveQuote: (name, quote) => dispatch({
       type: SAVE_QUOTE,
       payload: {
         name,
-        quote        
+        quote
       }
     })
   }
 }
-
-const QuoteContainer = connect(
+export default const QuoteContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Quote)
-
-export default QuoteContainer;
