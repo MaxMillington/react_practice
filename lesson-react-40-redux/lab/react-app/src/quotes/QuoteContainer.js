@@ -13,9 +13,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    saveQuote: (name, quote) => {
-      actions.saveQuote( dispatch, name, quote )
-    }
+    saveQuote: (name, quote) => dispatch({
+      type: constants.SAVE_QUOTE,
+      payload; {
+        name,
+        quote
+      }
+    })
   }
 }
 

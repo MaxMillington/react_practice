@@ -1,6 +1,7 @@
 //import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import TodoList from './TodoList';
+import * as constants from './TodoConstants'
 import actions from './TodoActions';
 
 
@@ -12,15 +13,20 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
 	 return {
-		 addTodo:(content)=> {
-			 actions.create( dispatch, content )
-	 	},
-    update: (todo) => {
-      actions.create( dispatch, todo )
-    },
-    remove: (id) => {
-      actions.remove( dispatch, id )
-    }
+		 addTodo:(content)=> dispatch({
+       type: constants.TODO_CREATE,
+       todos: controller.create( content )
+     }),
+
+    update: (todo) => dispatch({
+      type: constants.TODO_UPDATE,
+      todos: controller.update( todo )
+    }),
+
+    remove: (id) => dispatch({
+      type: constants.TODO_DELETE,
+      todos: controller.remove( id )
+    })
 	 }
 };
 let TodoContainer = connect(

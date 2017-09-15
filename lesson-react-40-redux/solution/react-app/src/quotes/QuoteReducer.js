@@ -1,4 +1,4 @@
-import * as constants from './QuoteActions'
+import * as constants from './QuoteConstants'
 
 const initialState = { name: '', quote: '' };
 

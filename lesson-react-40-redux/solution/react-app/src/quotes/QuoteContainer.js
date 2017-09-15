@@ -1,6 +1,7 @@
 //import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions from './QuoteActions';
+//import * as actions from './QuoteActions';
+import {SAVE_QUOTE} from './QuoteConstants'
 import Quote from './Quote';
 import './Quote.css'
 
@@ -13,9 +14,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    saveQuote: (name, quote) => {
-      actions.saveQuote( dispatch, name, quote )
-    }
+    saveQuote: (name, quote) => dispatch({
+      type: SAVE_QUOTE,
+      payload: {
+        name,
+        quote        
+      }
+    })
   }
 }
 
