@@ -1,5 +1,4 @@
 
-import { QUOTE_REQUEST, QUOTE_RECEIVE } from './QuoteConstants'
 
 function requestQuote() {
   return {
@@ -20,16 +19,12 @@ function receiveQuote( name, quote ) {
   }
 }
 
-// TODO dispatch the requestQuotes() action immediately
-// TODO create a setTimeout() call with a 2 second delay
-// TODO after two seconds, dispatch the receiveQuote() action
-
 export function saveQuote( name, quote ) {
   return function( dispatch ) {
     dispatch( requestQuote() )
 
     setTimeout( () => {
-      dispatch( receiveQuote( name, quote ))
+      dispatch( receiveQuote( name, quote )),
     }, 2000 )
   }
 }

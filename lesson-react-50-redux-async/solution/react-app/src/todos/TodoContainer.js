@@ -13,13 +13,13 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
 	 return {
 		 addTodo:(content)=> {
-			 actions.create( dispatch, content )
+			 dispatch( actions.create( content ))
 	 	},
     update: (todo) => {
-      actions.create( dispatch, todo )
+      dispatch( actions.create( todo ))
     },
     remove: (id) => {
-      actions.remove( dispatch, id )
+      dispatch( actions.remove( id ))
     }
 	 }
 };

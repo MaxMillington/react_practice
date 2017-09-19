@@ -4,36 +4,44 @@ import controller from './TodoController'
 
 class TodoActions {
 
-  create( dispatch, content ) {
+  create( content ) {
     let todos = controller.create( content )
-    dispatch( {
-      type: Constants.TODO_CREATE,
-      todos
-    });
+    return function( dispatch ) {
+      dispatch( {
+        type: Constants.TODO_CREATE,
+        todos
+      });
+    }
   }
 
-  findAll( dispatch ) {
+  findAll( ) {
     let todos = controller.findAll()
-    dispatch( {
-      type: Constants.TODO_FIND_ALL,
-      todos
-    })
+    return function( dispatch ) {
+      dispatch( {
+        type: Constants.TODO_FIND_ALL,
+        todos
+      })
+    }
   }
 
-  remove( dispatch, id) {
+  remove( id ) {
     let todos = controller.remove(id)
-    dispatch( {
-      type: Constants.TODO_DELETE,
-      todos
-    })
+    return function( dispatch ) {
+      dispatch( {
+        type: Constants.TODO_DELETE,
+        todos
+      })
+    }
   }
 
-  update( dispatch, todo ) {
+  update( todo ) {
     let todos = controller.update(todo)
-    dispatch( {
-      type: Constants.TODO_CREATE,
-      todos
-    })
+    return function( dispatch ) {
+      dispatch( {
+        type: Constants.TODO_CREATE,
+        todos
+      })
+    }
   }
 }
 

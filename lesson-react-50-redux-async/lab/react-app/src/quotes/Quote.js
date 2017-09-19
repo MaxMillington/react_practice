@@ -26,6 +26,7 @@ export default function Quote( props ) {
 }
 
 Quote.prototype.propTypes = {
+	// TODO add the prop type for the isDelayed property
 	name: 	PropTypes.string,
 	quote: 	PropTypes.string,
 	saveQuote: PropTypes.func.isRequired

@@ -1,25 +1,25 @@
-import * as constants from './QuoteActions'
+import { QUOTE_REQUEST, QUOTE_RECEIVE, QUOTE_SAVE } from './QuoteConstants'
 
 // TODO add the isDelayed property to the initialState, set it to false
-const initialState = { name: '', quote: '', isDelayed: false };
+const initialState = { name: '', quote: '' };
 
-export default function nameReducer(state, action) {
-	state = state || initialState;
+export default function nameReducer(state = initialState, action) {
+
 	switch (action.type) {
 
-		case constants.SAVE_QUOTE:
-		case constants.RECEIVE_QUOTE:
+		case QUOTE_RECEIVE:
+		case QUOTE_SAVE:
 			return {
 				...state,
-				name:  action.payload.name,
+				// TODO set the isDelayed property
+				name: action.payload.name,
 				quote: action.payload.quote
-				// TODO set the value of isDelayed to 'false'
-		};
+			};
 
-		case constants.REQUEST_QUOTE:
+		case QUOTE_REQUEST:
 			return {
-				...state
-				// TODO set the value of isDelayed to 'true'
+				...state,
+				// TODO update the state, set the value of the isDelayed property
 			};
 
 		default:

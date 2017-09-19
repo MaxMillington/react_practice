@@ -1,37 +1,35 @@
 
-export const SAVE_QUOTE = "SAVE_QUOTE"
-// TODO add two additional constants, REQUEST_QUOTE and RECEIVE_QUOTE
+import { QUOTE_REQUEST, QUOTE_RECEIVE, QUOTE_SAVE } from './QuoteConstants'
 
-export function requestQuote( dispatch ) {
-	dispatch( {
-		type: REQUEST_QUOTE,
-		payload: {
-			// TODO add the isDelayed property, set it to 'true'
-		}
-	})
+function requestQuote() {
+  return {
+    type: QUOTE_REQUEST,
+    payload: {
+      // TODO set the value of the isDelayed property
+    }
+  }
+}
+function receiveQuote( name, quote ) {
+  return {
+    type: QUOTE_RECEIVE,
+    payload: {
+      // TODO set the value of the isDelayed property
+      name,
+      quote
+    }
+  }
 }
 
-export function receiveQuote( dispatch, name, quote ) {
-	dispatch( {
-		type: RECEIVE_QUOTE,
-		payload: {
-			// TODO add the isDelayed property, set it to 'false'
-			name,
-			quote
-		}
-	})
-}
-
-// TODO dispatch the requestQuote() action immediately
+// TODO dispatch the requestQuotes() action immediately
 // TODO create a setTimeout() call with a 2 second delay
 // TODO after two seconds, dispatch the receiveQuote() action
 
-export function saveQuote( dispatch, name, quote ) {
-	dispatch( {
-		type: SAVE_QUOTE,
-		payload: {
-			name,
-			quote
-		}
-	})
+export function saveQuote( name, quote ) {
+  return {
+    type: QUOTE_SAVE,
+    payload: {
+      name,
+      quote
+    }
+  }
 }

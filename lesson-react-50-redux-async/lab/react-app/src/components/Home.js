@@ -1,7 +1,6 @@
 import React from 'react'
 
 import TodoContainer from '../todos/TodoContainer';
-// TODO change the Status variable to StatusContainer, also change it below
 import StatusContainer from './StatusContainer';
 
 import QuoteContainer from '../quotes/QuoteContainer'

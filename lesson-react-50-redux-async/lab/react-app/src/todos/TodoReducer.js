@@ -4,8 +4,8 @@ import controller from './TodoController'
 
 const initialState = {todos: controller.findAll()}
 
-export default function todoReducer(state, action) {
-	state = state || initialState;
+export default function todoReducer( state = initialState, action) {
+
 	switch (action.type) {
 
 		case constants.TODO_CREATE:
