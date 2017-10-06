@@ -5,6 +5,8 @@ import './styles.css'
 import delButton from './delete.png'
 
 var controller = require('./todo-controller.js');
+// var controller = require('./todo-controller.axios.js');
+// var controller = require('./todo-controller.fetch.js');
 
 var TodoItem = React.createClass({
     render: function () {
