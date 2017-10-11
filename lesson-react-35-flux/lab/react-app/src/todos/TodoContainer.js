@@ -4,7 +4,7 @@ import React from 'react';
 import TodoList from './TodoList';
 import todoController from './todo-controller'
 
-// TODO: import the todo-store and Dispatcher
+// TODO: import the todo-store, Dispatcher, and the constants
 
 export default class TodoContainer extends React.Component {
     constructor( props ) {
@@ -20,7 +20,7 @@ export default class TodoContainer extends React.Component {
 
     componentDidMount() {
       // TODO register the change listener with the TodoStore
-      // TODO invoke the _change() function to load teh store data
+      // TODO invoke the Dispatcher with an action TODO_FIND_ALL
       // TODO remove the calls to the todoController
       todoController.findAll( (todos) => {
         this.setState({todos: todos})
@@ -32,7 +32,6 @@ export default class TodoContainer extends React.Component {
 
     _change() {
       // TODO get the list of todos from the TodoStore
-      // TODO set the state variable, number, to the number of todos items
     }
     render() {
         return (

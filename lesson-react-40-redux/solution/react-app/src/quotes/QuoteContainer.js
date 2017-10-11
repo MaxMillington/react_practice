@@ -22,7 +22,8 @@ const mapDispatchToProps = (dispatch) => {
     })
   }
 }
-export default const QuoteContainer = connect(
+const QuoteContainer = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Quote)
+export default QuoteContainer
