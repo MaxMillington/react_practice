@@ -1,10 +1,11 @@
 import Dispatcher from '../components/Dispatcher';
 import constants from './todo-constants';
-import controller from './todo-controller';
+import todoController from './todo-controller';
 import {EventEmitter} from 'events';
 import assign from 'object-assign';
 
 const CHANGE_EVENT = 'change';
+
 
 let todos = [];
 
@@ -36,15 +37,27 @@ Dispatcher.register(function(action) {
     switch (action.actionType) {
 
         case constants.TODO_CREATE:
+        todoController.create( action.content, (data) => {
+          todos = data
+          emitChangeEvent()
+        });
         // TODO delegate the work to the controller.create() method
             break;
 
         case constants.TODO_DELETE:
         // TODO delegate the work to the controller.delete() method
+        todoController.remove( action.id, (data) => {
+          todos = data
+          emitChangeEvent()
+        });
             break;
 
         case constants.TODO_FIND_ALL:
         // TODO delegate the work to the controller.findAll() method
+        todoController.findAll( (data) => {
+          todos = data
+          emitChangeEvent()
+        });
             break;
 
         case constants.TODO_UPDATE:
