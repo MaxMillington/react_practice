@@ -4,7 +4,10 @@ import React from 'react';
 import TodoList from './TodoList';
 import todoController from './todo-controller'
 
-// TODO: import the todo-store and Dispatcher
+// TODO: import the todo-store, Dispatcher, and the constants
+import TodoStore from './todo-store'
+import Dispatcher from '../components/Dispatcher'
+import constants from './todo-constants'
 
 export default class TodoContainer extends React.Component {
     constructor( props ) {
@@ -20,19 +23,21 @@ export default class TodoContainer extends React.Component {
 
     componentDidMount() {
       // TODO register the change listener with the TodoStore
+      TodoStore.registerChangeListener( this._change )
       // TODO invoke the _change() function to load teh store data
+      Dispatcher.dispatch( {
+        actionType: constants.TODO_FIND_ALL
+      })
       // TODO remove the calls to the todoController
-      todoController.findAll( (todos) => {
-        this.setState({todos: todos})
-      });
     }
     componentWillUnmount() {
       // TODO unregister the callback
+      TodoStore.removeChangeListener( this._change )
     }
 
     _change() {
+      this.setState({ todos: TodoStore.getAll() })
       // TODO get the list of todos from the TodoStore
-      // TODO set the state variable, number, to the number of todos items
     }
     render() {
         return (
@@ -46,16 +51,18 @@ export default class TodoContainer extends React.Component {
     addTodo( content ) {
       // TODO remove the calls to the todoController
       // TODO replace with calls to the Dispather.dispatch( an action )
-      todoController.create( content, (todos) => {
-        this.setState({todos: todos})
-      });
+      Dispatcher.dispatch( {
+        actionType: constants.TODO_CREATE,
+        content: content
+      })
     }
     remove(id) {
       // TODO remove the calls to the todoController
       // TODO replace with calls to the Dispather.dispatch( an action )
-      todoController.remove( id, (todos) => {
-        this.setState({todos: todos})
-      });
+      Dispatcher.dispatch( {
+        actionType: constants.TODO_DELETE,
+        id: id
+      })
     }
     update( todo ) {
       // TODO remove the calls to the todoController

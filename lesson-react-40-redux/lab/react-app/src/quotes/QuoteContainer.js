@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from './QuoteActions';
 import Quote from './Quote';
 import './Quote.css'
+import * as constants from './QuoteConstants'
 
 const mapStateToProps = (state) => {
   return {
@@ -15,7 +16,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     saveQuote: (name, quote) => dispatch({
       type: constants.SAVE_QUOTE,
-      payload; {
+      payload: {
         name,
         quote
       }

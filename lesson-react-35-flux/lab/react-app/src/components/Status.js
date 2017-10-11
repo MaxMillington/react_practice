@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 
 // TODO import the TodoStore from ../todos/todo-store
+import TodoStore from '../todos/todo-store'
 
 export default class Status extends Component {
 
@@ -16,12 +17,16 @@ export default class Status extends Component {
     componentDidMount() {
       // TODO register the change listener on the TodoStore
       // TODO call _change() to load the listener
+      TodoStore.registerChangeListener( this._change )
+      this._change()
     }
     componentWillUnmount() {
+      TodoStore.removeChangeListener( this._change )
       // TODO unregister the callback
     }
 
-    _change() {
+    _change( todos ) {
+      this.setState( {number: todos.length })
       // TODO get the number of todo items form the TodoStore
       // TODO set the state variable, number, to the length of the todos
     }
