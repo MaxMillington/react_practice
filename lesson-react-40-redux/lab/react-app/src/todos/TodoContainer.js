@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import TodoList from './TodoList';
 import * as constants from './TodoConstants'
 import actions from './TodoActions';
+import controller from './TodoController'
 
 
 const mapStateToProps = (state, ownProps) => {
