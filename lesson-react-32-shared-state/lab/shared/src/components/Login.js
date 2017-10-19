@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react'
 
-import UserInfo from './UserInfo'
 
 export default class Login extends Component {
 
@@ -10,17 +9,17 @@ export default class Login extends Component {
   handleInput = ( input ) => {
     this._input = input
   }
+
   submit = ( event ) => {
       event.preventDefault();
       var content = this._input.value;
-      UserInfo.setName( content )
+      this.props.setName( content )
       this._input.value = '';
-      this.setState( { name: content})
   }
   render() {
     return (
       <div>
-        <div>User name is {UserInfo.getName()}</div>
+        <div>User name is {this.props.name}</div>
         <form onSubmit={this.submit}>
           <input
             type="text"

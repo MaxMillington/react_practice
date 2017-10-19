@@ -1,8 +1,6 @@
 
 import React, { Component } from 'react'
 
-import UserInfo from './UserInfo'
-
 export default class Marketing extends Component {
   constructor( props ) {
     super(props)
@@ -11,15 +9,11 @@ export default class Marketing extends Component {
     }
   }
 
-  componentDidMount() {
-    UserInfo.registerListener( this.itChanged )
-  }
-
   itChanged = ( name ) => this.setState({ name })
 
   render() {
     return (
-      <div>Hello, {this.state.name}, buy more stuff!!</div>
+      <div>Hello, {this.props.name}, buy more stuff!!</div>
     )
   }
 }
