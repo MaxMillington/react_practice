@@ -37,27 +37,15 @@ Dispatcher.register(function(action) {
     switch (action.actionType) {
 
         case constants.TODO_CREATE:
-        todoController.create( action.content, (data) => {
-          todos = data
-          emitChangeEvent()
-        });
         // TODO delegate the work to the controller.create() method
             break;
 
         case constants.TODO_DELETE:
         // TODO delegate the work to the controller.delete() method
-        todoController.remove( action.id, (data) => {
-          todos = data
-          emitChangeEvent()
-        });
             break;
 
         case constants.TODO_FIND_ALL:
         // TODO delegate the work to the controller.findAll() method
-        todoController.findAll( (data) => {
-          todos = data
-          emitChangeEvent()
-        });
             break;
 
         case constants.TODO_UPDATE:
