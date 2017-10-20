@@ -2,16 +2,12 @@
 import React from 'react'
 
 function TodoItem( props ) {
-    function update() {
-        props.update( props.todo );
-    }
     function remove() {
         props.remove( props.todo.id );
     }
     return (
         <div className="item">
-            <a onClick={update}
-                title="Update this todo item"
+            <a title="Update this todo item"
                 className="update-link"> {props.todo.content} </a>
             <a onClick={remove}
                 title="Delete this todo item"
