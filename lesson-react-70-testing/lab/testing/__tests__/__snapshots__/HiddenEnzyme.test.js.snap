@@ -1,0 +1,11 @@
+exports[`Hidden --  should have a <p> with class === "block 1`] = `
+"<div><span>Click Here</span>
+  <p class=\"block\">Can you see me now?</p>
+</div>"
+`;
+
+exports[`Hidden --  should have a <p> with class === "none" after click 1`] = `
+"<div><span>Click Here</span>
+  <p class=\"block\">Can you see me now?</p>
+</div>"
+`;
