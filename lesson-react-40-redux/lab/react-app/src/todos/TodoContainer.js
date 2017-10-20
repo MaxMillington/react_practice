@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
       todos: controller.update( todo )
     }),
 
-    delete: (id) => dispatch({
+    remove: (id) => dispatch({
       type: constants.TODO_DELETE,
       todos: controller.remove( id )
     })
