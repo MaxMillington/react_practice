@@ -1,3 +1,4 @@
+
 var axios = require('axios')
 
 var BASE = 'todos'
@@ -15,7 +16,6 @@ module.exports = {
     })
   },
 
-  // TODO replace this method with one using jquery
   findAll: function(callback) {
     axios.get(BASE)
       .then(function(response) {
@@ -26,7 +26,6 @@ module.exports = {
       })
   },
 
-  // TODO replace this method with one using jquery
   update: function(todo, callback) {
     axios.patch(BASE + '/' + todo.id, {
       todo: todo,
@@ -38,8 +37,7 @@ module.exports = {
         console.log('error', error)
       })
   },
-
-  // TODO replace this method with one using jquery
+  
   remove: function(id, callback) {
     axios.delete(BASE + '/' + id)
       .then(function(response) {
