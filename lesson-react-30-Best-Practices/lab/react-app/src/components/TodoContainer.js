@@ -7,19 +7,37 @@ import TodoList from './TodoList'
 export default class TodoContainer extends Component {
   constructor(props) {
     super(props)
-    // TODO add the initial state for the todos array
     this.state = {
-
+      todos: [
+        {id: '1', content: 'First'},
+        {id: '2', content: 'Second'}
+      ],
+      index: 3
     }
   }
 
-  // TODO add the business logic: delete, addTodo
+  addTodo = ( content ) => {
+    var todo = { id: this.state.index++, content: content };
+    this.setState( { todos: this.state.todos.concat( todo ) } );
+
+  }
+
+  delete = (id) => {
+    var todos = this.state.todos.filter( function(todo) {
+      return todo.id !== id
+    });
+    this.setState( { todos: todos });
+  }
   
   render() {
     return (
       <div>
-        {/* TODO pass the state and the callbacks to TodoList */}
-        <TodoList></TodoList>
+        <TodoList
+          todos={this.state.todos}
+          index={this.props.index}
+          addTodo={this.addTodo}
+          delete={this.delete}
+        />
       </div>
     )
   }

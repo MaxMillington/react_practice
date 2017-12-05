@@ -1,85 +1,71 @@
-'use strict';
-
 var React = require('react');
 
 import './styles.css'
 
-var TodoItem = React.createClass({
-    render: function () {
-        return (
-            <div className="item">
-                <a  onClick={this.update}
-                    className="update-link"> {this.props.todo.content} </a>
-                <a  onClick={this.delete}
-                    title="Delete this todo item"
-                    className="del-btn">Delete</a>
-            </div>
-        );
-    },
-    delete(event) {
-      event.preventDefault()
-        this.props.delete( this.props.todo.id );
-    }
+const TodoItem = (props) => {
 
-});
+  const del = (event) => {
+    event.preventDefault()
+    props.delete( props.todo.id );
+  }
+
+  const update = (event) => {
+    event.preventDefault()
+    props.delete( props.todo.id );
+  }
+
+  return (
+    <div className="item">
+        <a  onClick={update}
+            className="update-link"
+        >
+          {props.todo.content}
+        </a>
+        <a  onClick={del}
+            title="Delete this todo item"
+            className="del-btn"
+        >
+            Delete
+        </a>
+    </div>
+  )
+
+}
 
 
-var TodoInput = React.createClass({
-    render: function () {
-        return (
-            <form onSubmit={this.submit}>
-                <div className="item-new">
-                    <input type="text" name="content" className="input"/>
-                </div>
-            </form>
-        );
-    },
-    submit( event ) {
-        event.preventDefault();
-        var content = event.target.elements[0].value;
-        event.target.elements[0].value = '';
-        this.props.addTodo( content );
-    }
-});
+const TodoInput = (props) => {
 
-var TodoList = module.exports = React.createClass({
-    getInitialState() {
-        return {
-            todos: [
-                {id: '1', content: 'First'},
-                {id: '2', content: 'Second'}
-            ],
-            index: 3
-        }
-    },
+  const submit = ( event ) => {
+    event.preventDefault();
+    var content = event.target.elements[0].value;
+    event.target.elements[0].value = '';
+    props.addTodo( content );
+  }
 
-    render: function render() {
-        var self = this;
+    return (
+      <form onSubmit={submit}>
+          <div className="item-new">
+              <input type="text" name="content" className="input"/>
+          </div>
+      </form>
+    );
+};
 
-        return (
-            <div id="layout">
-                <h1 id="page-title">Express Todo</h1>
-                <div id="list">
+const TodoList = (props) => {
+    return (
+      <div id="layout">
+          <h1 id="page-title">Express Todo</h1>
+          <div id="list">
 
-                    <TodoInput addTodo={this.addTodo} />
+              <TodoInput addTodo={props.addTodo} />
 
-                    {this.state.todos.map( function(todo, idx) {
-                        return ( <TodoItem key={idx} todo={todo} delete={self.delete} /> );
-                        })}
+            {props.todos.map( function(todo, idx) {
+              return ( <TodoItem key={idx} todo={todo} delete={props.delete} /> );
+            })}
 
-                </div>
-            </div>
-        )
-    },
-    addTodo( content ) {
-        var todo = { id: this.state.index++, content: content };
-        this.setState( { todos: this.state.todos.concat( todo ) } );
+          </div>
+      </div>
+    )
+}
 
-    },
-    delete(id) {
-        var todos = this.state.todos.filter( function(todo) {
-            return todo.id !== id
-        });
-        this.setState( { todos: todos });
-    }
-});
+export default TodoList
