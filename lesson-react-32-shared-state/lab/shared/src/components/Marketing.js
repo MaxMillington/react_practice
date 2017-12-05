@@ -1,19 +1,28 @@
 
 import React, { Component } from 'react'
 
+import UserInfo from './UserInfo'
+
 export default class Marketing extends Component {
-  constructor( props ) {
+
+  constructor(props) {
     super(props)
     this.state = {
-      name: 'Unknown power user'
+      name: 'Unknown Name'
     }
   }
+  componentDidMount() {
+    UserInfo.registerListener(this.changeName)
+  }
 
-  itChanged = ( name ) => this.setState({ name })
+  changeName = (name) => {
+    console.log('yo', name)
+    this.setState({name})
+  }
 
   render() {
     return (
-      <div>Hello, {this.props.name}, buy more stuff!!</div>
+      <div>Hello, {this.state.name}, buy more stuff!!</div>
     )
   }
 }
