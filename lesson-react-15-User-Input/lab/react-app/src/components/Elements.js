@@ -22,8 +22,13 @@ export default class Elements extends Component {
 
   submit = (e) => {
     e.preventDefault()
-    // TODO extract the values from the e.target.elements[] array
-    // TODO update the state variables
+    const gender = e.target.elements[0].checked? e.target.elements[0].value : e.target.elements[1].checked && e.target.elements[1].value
+    this.setState({
+      gender,
+      ready: e.target.elements[2].checked,
+      firstname: e.target.elements[3].value,
+      lastname: e.target.elements[4].value
+    })
   }
 
   render() {

@@ -22,7 +22,13 @@ export default class Uncontrolled extends Component {
 
   submit = (e) => {
     e.preventDefault()
-    // TODO set the state variables from the input reference variables
+    const gender = this._male.checked ? 'male' : this._female.checked && 'female'
+    this.setState({
+      gender,
+      firstname: this._firstname.value,
+      lastname: this._lastname.value,
+      ready: this._ready.checked,
+    })
   }
 
   render() {
@@ -32,30 +38,30 @@ export default class Uncontrolled extends Component {
         <form onSubmit={this.submit}>
           <label>Male:</label>
           <input type="radio" name="gender" value="male"
-            // TODO add the 'ref' attribute
+            ref={(input) => this._male = input}
             />
 
           <label>Female:</label>
           <input type="radio" name="gender" value="female"
-            // TODO add the 'ref' attribute
+                 ref={(input) => this._female = input}
             />
           <br />
 
           <label>Ready?</label>
           <input type="checkbox"
-            // TODO add the 'ref' attribute
+                 ref={(input) => this._ready = input}
             />
           <br />
 
           <label>First:</label>
           <input type="text"
-            // TODO add the 'ref' attribute
+                 ref={(input) => this._firstname = input}
             />
           <br />
 
           <label>Last:</label>
           <input type="text"
-            // TODO add the 'ref' attribute
+                 ref={(input) => this._lastname = input}
             />
           <br />
 
