@@ -1,46 +1,53 @@
-// TODO import the jquery module
-var uuid = require('uuid')
+var axios = require('axios')
 
-var todos = [{
-  id: uuid(),
-  content: 'First'
-}];
+var BASE = 'todos'
 
 module.exports = {
-  // TODO replace this method with one using jquery
   create: function(content, callback) {
-    var todo = {
-      id: uuid(),
+    axios.post(BASE, {
       content: content
-    };
-    todos = todos.concat(todo);
-    callback(todos);
+      })
+      .then(function(response) {
+        callback(response.data)
+      })
+      .catch(function(error) {
+      console.log('error', error)
+    })
   },
 
   // TODO replace this method with one using jquery
   findAll: function(callback) {
-    callback(todos);
+    axios.get(BASE)
+      .then(function(response) {
+        callback(response.data)
+      })
+      .catch(function(error) {
+        console.log('error', error)
+      })
   },
 
   // TODO replace this method with one using jquery
-  update: function(item, callback) {
-    var tt = todos.map(function(todo) {
-      if (item.id === todo.id) {
-        todo.content = item.content;
-      }
-      return todo;
-    });
-    todos = tt;
-    callback(todos);
+  update: function(todo, callback) {
+    axios.patch(BASE + '/' + todo.id, {
+      todo: todo,
+      })
+      .then(function(response) {
+        callback(response.data)
+      })
+      .catch(function(error) {
+        console.log('error', error)
+      })
   },
 
   // TODO replace this method with one using jquery
   remove: function(id, callback) {
-    var tt = todos.filter(function(todo) {
-      return (todo.id !== id);
-    });
-    todos = tt;
-    callback(todos);
+    axios.delete(BASE + '/' + id)
+      .then(function(response) {
+        callback(response.data)
+      })
+      .catch(function(error) {
+        console.log('error', error)
+      })
   }
 
 };
